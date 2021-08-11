@@ -9,10 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    @FindBy(id = "ctl00_MainContent_username")
+    @FindBy(id = "username")
     private WebElement usernameElement;
 
-    @FindBy(id = "ctl00_MainContent_password")
+    @FindBy(id = "password")
     private WebElement passwordElement;
 
     public LoginPage() {

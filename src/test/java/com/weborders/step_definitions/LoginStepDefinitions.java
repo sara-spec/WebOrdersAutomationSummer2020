@@ -34,7 +34,7 @@ public class LoginStepDefinitions {
         JavascriptExecutor jsx = (JavascriptExecutor)Driver.getDriver();
         jsx.executeScript("window.scrollBy(0,700)", "");
 
-        WebElement destination = Driver.getDriver().findElement(By.xpath(""));
+        WebElement destination = Driver.getDriver().findElement(By.xpath("//h3[.='Open Lending | LinkedIn']"));
 
         destination.click();
     }
