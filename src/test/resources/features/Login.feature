@@ -1,6 +1,8 @@
-Feature: Login
+Feature:
 
-  Scenario: User just logs in
+  Scenario:
     Given user is on the landing page
-    When user logs in
-    Then user should see "Web Orders" page title
+    When user searches "Open Lending"
+    Then user clicks on "Open Lending | Linkedln"
+    And user enters valid credentials
+    Then user should see Open Lending Linkedn Title

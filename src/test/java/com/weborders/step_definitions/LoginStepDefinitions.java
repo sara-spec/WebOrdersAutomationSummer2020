@@ -8,6 +8,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 public class LoginStepDefinitions {
     LoginPage loginPage = new LoginPage();
@@ -19,15 +23,37 @@ public class LoginStepDefinitions {
         String URL = ConfigurationReader.getProperty("url");
         Driver.getDriver().get(URL);
     }
-
-    @When("user logs in")
-    public void user_logs_in() {
-        loginPage.login();
+    @When("user searches {string}")
+    public void user_searches(String string) {
+        WebElement searchBox = Driver.getDriver().findElement(By.name("q"));
+        searchBox.sendKeys("Open Lending"+ Keys.ENTER);
     }
 
-    @Then("user should see {string} page title")
-    public void user_should_see_page_title(String string) {
-        String actualTitle = homePage.getPageTitleText();
-        Assert.assertEquals(string, actualTitle);
+    @Then("user clicks on {string}")
+    public void user_clicks_on(String string) {
+        JavascriptExecutor jsx = (JavascriptExecutor)Driver.getDriver();
+        jsx.executeScript("window.scrollBy(0,700)", "");
+
+        WebElement destination = Driver.getDriver().findElement(By.xpath(""));
+
+        destination.click();
     }
+    @Then("user enters valid credentials")
+    public void user_enters_valid_credentials() {
+          loginPage.login();
+    }
+
+    @Then("user should see Open Lending Linkedn Title")
+    public void user_should_see_open_lending_linkedn_title() {
+
+        WebElement openLending = Driver.getDriver().findElement(By.xpath("//p[@class='org-top-card-summary__tagline t-16 t-black']"));
+
+        Assert.assertEquals("Verification Passed", openLending.getText(), "Say YES to more automotive loans.");
+    }
+
+
+
+
+
+
 }
