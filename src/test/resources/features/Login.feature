@@ -6,3 +6,6 @@ Feature:
     Then user clicks on "Open Lending | Linkedln"
     And user enters valid credentials
     Then user should see Open Lending Linkedn Title
+
+
+    #in Gherkin Language
