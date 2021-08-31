@@ -18,38 +18,26 @@ public class LoginStepDefinitions {
     HomePage homePage = new HomePage();
 //    instance = object
 
-    @Given("user is on the landing page")
-    public void user_is_on_the_landing_page() {
+    @Given("user is homepage")
+    public void user_is_homepage() {
         String URL = ConfigurationReader.getProperty("url");
         Driver.getDriver().get(URL);
     }
-    @When("user searches {string}")
-    public void user_searches(String string) {
-        WebElement searchBox = Driver.getDriver().findElement(By.name("q"));
-        searchBox.sendKeys("Open Lending"+ Keys.ENTER);
+
+    @When("user clicks on login")
+    public void user_clicks_on_login() {
+        WebElement login = Driver.getDriver().findElement(By.className("secondary-menu-label"));
+        //xpath//span[.='Login']
+        login.click();
+    }
+    @Then("user should see Login page opened")
+    public void user_should_see_login_page_opened() {
+
     }
 
-    @Then("user clicks on {string}")
-    public void user_clicks_on(String string) {
-        JavascriptExecutor jsx = (JavascriptExecutor)Driver.getDriver();
-        jsx.executeScript("window.scrollBy(0,700)", "");
 
-        WebElement destination = Driver.getDriver().findElement(By.xpath("//h3[.='Open Lending | LinkedIn']"));
 
-        destination.click();
-    }
-    @Then("user enters valid credentials")
-    public void user_enters_valid_credentials() {
-          loginPage.login();
-    }
 
-    @Then("user should see Open Lending Linkedn Title")
-    public void user_should_see_open_lending_linkedn_title() {
-
-        WebElement openLending = Driver.getDriver().findElement(By.xpath("//p[@class='org-top-card-summary__tagline t-16 t-black']"));
-
-        Assert.assertEquals("Verification Passed", openLending.getText(), "Say YES to more automotive loans.");
-    }
 
 
 
